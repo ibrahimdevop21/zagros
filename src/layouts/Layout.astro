@@ -1,0 +1,89 @@
+---
+import Navigation from '../components/Navigation';
+import Footer from '../components/Footer';
+import '../styles/base.css';
+import '@fontsource/merriweather/400.css';
+import '@fontsource/merriweather/700.css';
+import '@fontsource/open-sans/400.css';
+import '@fontsource/open-sans/600.css';
+
+interface Props {
+  title: string;
+  lang: string;
+}
+
+const { title, lang } = Astro.props;
+
+// Set the document direction based on language
+const dir = lang === 'ar' ? 'rtl' : 'ltr';
+---
+
+<!DOCTYPE html>
+<html lang={lang} dir={dir} class="h-full scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="description" content="Zagros Agriculture - Growing Tomorrow's Agriculture" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{title}</title>
+  </head>
+  <body class="h-full bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100 antialiased">
+    <div class="min-h-full flex flex-col">
+      <Navigation url={Astro.url} client:load />
+      <main class="flex-1 w-full">
+        <slot />
+      </main>
+      <Footer url={Astro.url} client:load />
+    </div>
+
+    <script>
+      const theme = (() => {
+        if (typeof localStorage !== 'undefined' && localStorage.getItem('theme')) {
+          return localStorage.getItem('theme');
+        }
+        if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+          return 'dark';
+        }
+        return 'light';
+      })();
+
+      if (theme === 'light') {
+        document.documentElement.classList.remove('dark');
+      } else {
+        document.documentElement.classList.add('dark');
+      }
+      window.localStorage.setItem('theme', theme);
+    </script>
+  </body>
+</html>
+
+<style is:global>
+  :root {
+    --accent: 76, 140, 43;      /* Green */
+    --accent-light: 126, 181, 96;  /* Light green */
+    --accent-dark: 45, 94, 21;     /* Dark green */
+    --accent-gradient: linear-gradient(
+      45deg,
+      rgb(var(--accent)),
+      rgb(var(--accent-light)) 30%,
+      #f4f1de 60%
+    );
+  }
+  html {
+    font-family: 'Open Sans', system-ui, sans-serif;
+    background-size: 224px;
+    scroll-behavior: smooth;
+  }
+  code {
+    font-family:
+      Menlo,
+      Monaco,
+      Lucida Console,
+      Liberation Mono,
+      DejaVu Sans Mono,
+      Bitstream Vera Sans Mono,
+      Courier New,
+      monospace;
+  }
+</style>

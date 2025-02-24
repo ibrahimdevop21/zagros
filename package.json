@@ -1,27 +1,31 @@
 {
-  "name": "temptest",
-  "description": "Minimal Astro site with Sanity Studio",
+  "name": "zagros",
+  "type": "module",
+  "version": "0.0.1",
   "scripts": {
-    "dev": "concurrently \"npm run dev --workspace=astro-app\" \"npm run dev --workspace=studio\""
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro"
   },
-  "keywords": [
-    "Sanity",
-    "Astro",
-    "Headless CMS",
-    "Visual Editing",
-    "Live Content API (LCAPI)",
-    "Real-time"
-  ],
-  "bugs": {
-    "url": "https://github.com/sanity-io/sanity-template-astro-clean/issues"
+  "dependencies": {
+    "@astrojs/react": "^3.0.9",
+    "@fontsource/merriweather": "^5.1.1",
+    "@fontsource/open-sans": "^5.1.1",
+    "@headlessui/react": "^1.7.18",
+    "@heroicons/react": "^2.1.1",
+    "astro": "^4.2.1",
+    "i18next": "^23.8.2",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-i18next": "^14.0.5"
   },
-  "homepage": "https://github.com/sanity-io/sanity-template-astro-clean#readme",
-  "workspaces": [
-    "studio",
-    "astro-app"
-  ],
   "devDependencies": {
-    "concurrently": "^9.1.0"
-  },
-  "type": "module"
+    "@astrojs/tailwind": "^5.1.0",
+    "@tailwindcss/forms": "^0.5.10",
+    "autoprefixer": "^10.4.16",
+    "postcss": "^8.4.31",
+    "tailwindcss": "^3.4.1"
+  }
 }

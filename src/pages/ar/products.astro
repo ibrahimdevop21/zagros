@@ -1,0 +1,14 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Product from '../../components/Product';
+
+const lang = 'ar';
+---
+
+<Layout title="منتجاتنا | زاغروس للزراعة" lang={lang}>
+  <div class="bg-white dark:bg-primary-900">
+    <div class="relative isolate">
+      <Product client:load />
+    </div>
+  </div>
+</Layout>

@@ -1,0 +1,16 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Contact from '../../components/Contact';
+
+const lang = 'en';
+---
+
+<Layout title="Contact Zagros" lang={lang}>
+  <div class="bg-white dark:bg-primary-900">
+    <div class="relative isolate px-6 pt-14 lg:px-8">
+      <div class="mx-auto max-w-2xl py-8">
+        <Contact client:load />
+      </div>
+    </div>
+  </div>
+</Layout>

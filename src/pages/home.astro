@@ -1,0 +1,44 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const { lang } = Astro.props;
+
+// This would come from Sanity later
+const content = {
+  en: {
+    title: "Growing Tomorrow's Agriculture",
+    description: "Sustainable farming solutions for a better future",
+    cta: "Explore Our Services"
+  },
+  ar: {
+    title: "نزرع مستقبل الزراعة",
+    description: "حلول زراعية مستدامة لمستقبل أفضل",
+    cta: "اكتشف خدماتنا"
+  }
+}[lang];
+---
+
+<Layout title={content.title} lang={lang}>
+  <div class="bg-white dark:bg-gray-900">
+    <div class="relative isolate px-6 pt-14 lg:px-8">
+      <div class="mx-auto max-w-2xl py-32 sm:py-48 lg:py-56">
+        <div class="text-center">
+          <h1 class="text-4xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-6xl">
+            {content.title}
+          </h1>
+          <p class="mt-6 text-lg leading-8 text-gray-600 dark:text-gray-300">
+            {content.description}
+          </p>
+          <div class="mt-10 flex items-center justify-center gap-x-6">
+            <a
+              href={`/${lang}/services`}
+              class="rounded-md bg-crop-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-crop-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-crop-600"
+            >
+              {content.cta}
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</Layout>

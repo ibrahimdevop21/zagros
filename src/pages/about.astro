@@ -1,0 +1,147 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { getLangFromUrl, useTranslations } from '../i18n/utils';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
+// These would typically come from Sanity
+const pageContent = {
+  en: {
+    title: 'About Zagros Agriculture',
+    description: 'We are dedicated to revolutionizing agriculture through sustainable practices and innovative technology.',
+    values: {
+      title: 'Our Values',
+      subtitle: 'What drives us forward',
+      description: 'Our core values shape everything we do, from how we develop our solutions to how we serve our customers.',
+      items: [
+        {
+          icon: '🌱',
+          title: 'Innovation',
+          description: 'Continuously pushing boundaries in agricultural technology'
+        },
+        {
+          icon: '🌍',
+          title: 'Sustainability',
+          description: 'Committed to environmental stewardship and responsible farming'
+        },
+        {
+          icon: '👥',
+          title: 'Community',
+          description: 'Building strong relationships with farmers and stakeholders'
+        },
+        {
+          icon: '⭐',
+          title: 'Excellence',
+          description: 'Delivering the highest quality in everything we do'
+        }
+      ]
+    },
+    mission: {
+      title: 'Our Mission',
+      description: 'To empower farmers with sustainable solutions that increase productivity while preserving our planet\'s resources for future generations.'
+    }
+  },
+  ar: {
+    title: 'عن زاغروس للزراعة',
+    description: 'نحن ملتزمون بإحداث ثورة في الزراعة من خلال الممارسات المستدامة والتكنولوجيا المبتكرة.',
+    values: {
+      title: 'قيمنا',
+      subtitle: 'ما يدفعنا للأمام',
+      description: 'تشكل قيمنا الأساسية كل ما نقوم به، من كيفية تطوير حلولنا إلى كيفية خدمة عملائنا.',
+      items: [
+        {
+          icon: '🌱',
+          title: 'الابتكار',
+          description: 'دفع حدود التكنولوجيا الزراعية باستمرار'
+        },
+        {
+          icon: '🌍',
+          title: 'الاستدامة',
+          description: 'ملتزمون بالإشراف البيئي والزراعة المسؤولة'
+        },
+        {
+          icon: '👥',
+          title: 'المجتمع',
+          description: 'بناء علاقات قوية مع المزارعين وأصحاب المصلحة'
+        },
+        {
+          icon: '⭐',
+          title: 'التميز',
+          description: 'تقديم أعلى جودة في كل ما نقوم به'
+        }
+      ]
+    },
+    mission: {
+      title: 'مهمتنا',
+      description: 'تمكين المزارعين بحلول مستدامة تزيد الإنتاجية مع الحفاظ على موارد كوكبنا للأجيال القادمة.'
+    }
+  }
+};
+
+const content = pageContent[lang];
+---
+
+<Layout title={content.title} lang={lang}>
+  <div class="bg-white dark:bg-gray-900">
+    <div class="relative isolate px-6 pt-14 lg:px-8">
+      <div class="mx-auto max-w-2xl py-32 sm:py-48 lg:py-56">
+        <div class="text-center">
+          <h1 class="text-4xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-6xl">
+            {content.title}
+          </h1>
+          <p class="mt-6 text-lg leading-8 text-gray-600 dark:text-gray-300">
+            {content.description}
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="py-24 sm:py-32">
+      <div class="mx-auto max-w-7xl px-6 lg:px-8">
+        <div class="mx-auto max-w-2xl lg:text-center">
+          <h2 class="text-base font-semibold leading-7 text-crop-600 dark:text-crop-400">
+            {content.values.title}
+          </h2>
+          <p class="mt-2 text-3xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-4xl">
+            {content.values.subtitle}
+          </p>
+          <p class="mt-6 text-lg leading-8 text-gray-600 dark:text-gray-300">
+            {content.values.description}
+          </p>
+        </div>
+
+        <div class="mx-auto mt-16 max-w-2xl sm:mt-20 lg:mt-24 lg:max-w-none">
+          <dl class="grid max-w-xl grid-cols-1 gap-x-8 gap-y-16 lg:max-w-none lg:grid-cols-4">
+            {content.values.items.map((value) => (
+              <div class="flex flex-col items-center text-center">
+                <dt class="flex items-center gap-x-3 text-base font-semibold leading-7 text-gray-900 dark:text-white">
+                  <span class="text-4xl">{value.icon}</span>
+                  {value.title}
+                </dt>
+                <dd class="mt-4 flex flex-auto flex-col text-base leading-7 text-gray-600 dark:text-gray-300">
+                  <p class="flex-auto">{value.description}</p>
+                </dd>
+              </div>
+            ))}
+          </dl>
+        </div>
+      </div>
+    </div>
+
+    <div class="relative isolate -z-10 mt-32 sm:mt-40">
+      <div class="mx-auto max-w-7xl sm:px-6 lg:px-8">
+        <div class="mx-auto flex max-w-2xl flex-col gap-16 bg-white/5 px-6 py-16 ring-1 ring-white/10 sm:rounded-3xl sm:p-8 lg:mx-0 lg:max-w-none lg:flex-row lg:items-center lg:py-20 xl:gap-x-20 xl:px-20">
+          <div class="w-full flex-auto">
+            <h2 class="text-3xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-4xl">
+              {content.mission.title}
+            </h2>
+            <p class="mt-6 text-lg leading-8 text-gray-600 dark:text-gray-300">
+              {content.mission.description}
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</Layout>
