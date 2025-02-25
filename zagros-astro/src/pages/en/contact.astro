@@ -1,6 +1,6 @@
 ---
 import Layout from '../../layouts/Layout.astro';
-import Contact from '../../components/Contact';
+import ContactComponent from '../../components/Contact';
 
 const lang = 'en';
 ---
@@ -9,7 +9,7 @@ const lang = 'en';
   <div class="bg-white dark:bg-primary-900">
     <div class="relative isolate px-6 pt-14 lg:px-8">
       <div class="mx-auto max-w-2xl py-8">
-        <Contact client:load />
+        <ContactComponent client:load />
       </div>
     </div>
   </div>

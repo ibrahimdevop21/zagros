@@ -50,10 +50,12 @@ const dir = lang === 'ar' ? 'rtl' : 'ltr';
 
       if (theme === 'light') {
         document.documentElement.classList.remove('dark');
-      } else {
+      } else if (theme === 'dark') {
         document.documentElement.classList.add('dark');
       }
-      window.localStorage.setItem('theme', theme);
+      if (theme) {
+        window.localStorage.setItem('theme', theme);
+      }
     </script>
   </body>
 </html>
